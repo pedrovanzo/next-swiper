@@ -10,28 +10,34 @@ import "swiper/css/pagination";
 export default function Page() {
   const cardArray = [
     {
-      title: "Lorem Ipsum",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, vero!",
+      title: "Siamese",
+      img: "https://live.staticflickr.com/5013/5444670579_e0d4f4d5ff.jpg",
+      text: "Siamese cats are known for their sleek bodies, striking blue almond-shaped eyes, and short coats with color points on the ears, face, paws, and tail.",
+      origin: "Thailand",
     },
     {
-      title: "pnpm Package Manager",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, vero!",
+      title: "Maine Coon",
+      img: "https://live.staticflickr.com/8353/29039134436_083a4b3a89.jpg",
+      text: "Maine Coons are one of the largest domesticated cat breeds. They are known for their friendly, sociable nature and luxurious, long fur that requires regular grooming.",
+      origin: "United States",
     },
     {
-      title: "Frontend Development",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, vero!",
+      title: "Persian",
+      img: "https://live.staticflickr.com/4105/5003909750_2933a1ea88.jpg",
+      text: "Persian cats are known for their long, luxurious fur, flat faces, and sweet, gentle personalities. They require regular grooming to prevent matting.",
+      origin: "Iran (Persia)",
     },
     {
-      title: "Youtube",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, vero!",
+      title: "Sphynx",
+      img: "https://live.staticflickr.com/8031/8059521908_cac295f4f9.jpg",
+      text: "Sphynx cats are hairless, with wrinkled skin and big ears. Despite their lack of fur, they are known for their warmth and affectionate nature.",
+      origin: "Canada",
     },
     {
-      title: "NextJS",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, vero!",
-    },
-    {
-      title: "Tailwindcss",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, vero!",
+      title: "Bengal",
+      img: "https://live.staticflickr.com/65535/29826602587_daf9f5e211.jpg",
+      text: "Bengal cats have a distinctive leopard-like appearance with a sleek coat covered in marbled or spotted markings. They are energetic, playful, and love to climb.",
+      origin: "United States",
     },
   ];
   return (
@@ -39,14 +45,26 @@ export default function Page() {
       loop
       navigation
       pagination={{ type: "fraction" }}
-      modules={[Navigation, Pagination]}
-      className="w-full min-h-32 shadow-md"
+      modules={[Navigation]}
+      className="w-full min-h-32"
     >
       {cardArray.map((item, index) => (
         <SwiperSlide key={index} className="pb-7">
-          <div className="flex flex-col gap-1 mx-16 my-4">
-            <p className="text-2xl text-red-900 font-semibold">{item.title}</p>
-            <p className="italic text-sm">{item.text}</p>
+          <div className="flex flex-col gap-1 mx-16 my-4 rounded-lg bg-violet-800 shadow-md overflow-clip">
+            <figure className="aspect-video">
+              <img
+                src={item.img}
+                alt={item.title}
+                className="aspect-video object-cover"
+              />
+            </figure>
+            <div className="p-4 flex flex-col gap-2">
+              <p className="text-xl text-white font-semibold">{item.title}</p>
+              <p className="italic text-xs font-semibold text-violet-100">
+                Origin: {item.origin}
+              </p>
+              <p className="text-sm">{item.text}</p>
+            </div>
           </div>
         </SwiperSlide>
       ))}
